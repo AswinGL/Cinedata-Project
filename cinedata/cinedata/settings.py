@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from datetime import timedelta
+
 from pathlib import Path
 
 from decouple import config
@@ -40,7 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'movies'
+    'movies',
+    'authentication',
+    'rest_framework_simplejwt',
+
 ]
 
 MIDDLEWARE = [
@@ -138,3 +143,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# media root and url 
+
+MEDIA_ROOT = 'media'
+
+MEDIA_URL = '/media/'
+
+# settings 
+
+AUTH_USER_MODEL = 'authentication.Profile'
+
+
+SIMPLE_JWT = {
+
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+
+}
